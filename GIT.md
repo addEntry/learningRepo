@@ -5,56 +5,65 @@
 ##### - set global config -
 
   * set userName
-      ```bash
-      git config --global user.name <name>
-      ```
+    ```bash
+    git config --global user.name <name>
+    ```
+
   * set mail
-      ```bash
-      git config --global user.email <mail>
-      ```
+    ```bash
+    git config --global user.email <mail>
+    ```
+
   * set global editor
-      ```bash
-      git config --global core.editor <editor>
-      ```
+    ```bash
+    git config --global core.editor <editor>
+    ```
+
   * telling git about our GPG key
-      ```bash
-      git config --global user.signingkey <key>
-      ```
+    ```bash
+    git config --global user.signingkey <key>
+    ```
 
 ##### - check config -
 
   * see all of our infos
-      ```bash
-      git config --list
-      ```
+    ```bash
+    git config --list
+    ```
 
 ### -- basic workflow --
 
 #### - repo init && check status -
 
   * start our repository
-      ```bash
-      git init
-      ```
+    ```bash
+    git init
+    ```
+
   * check status
-      ```bash
-      git status
-      ```
+    ```bash
+    git status
+    ```
+
   * add files
-      ```bash
-      git add <file>
-      ```
-      ```bash
-      git add -A
-      ```
+    ```bash
+    git add <file>
+    ```
+
+    ```bash
+    git add -A
+    ```
+
   * set commit with GPG signature
-      ```bash
-      git commit -S -m <message>
-      ```
+    ```bash
+    git commit -S -m <message>
+    ```
+
   * view logs
     ```bash  
     git logs
     ```
+
   * revert/delete commits
     ```bash
     git revert <hashOfTheCommit>
@@ -81,18 +90,22 @@
     ```bash
     git remote add origin git@github.com:addEntry/learningRepo.git
     ```
+
   * check added repository
     ```bash
     git remote -v
     ```
+
   * tell git how to map branches
     ```bash
     git branch set-upstream-to=origin/master master
     ```
+
   * pushing to the repository
     ```bash
     git push
     ```
+    
   * clone repository
     ```bash
     git clone <repoAdress>
