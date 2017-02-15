@@ -1,68 +1,69 @@
 // server.js
-
 var app = require('express')();
 var morgan = require('morgan');
 var port = process.env.PORT || 1337;
 var bodyParser = require('body-parser');
 
-// configure app
+// app config
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({
     extended: true
 }));
 
-// configure routes
+// routes config
 
-// route index page && authentication
+// index route
 app.get('/', function(req, res) {
     res.sendFile(__dirname + '/index.html');
 });
-app.use(userAuthentication) // set user authentication after login page
 
-app.post('/user', function(req, res) {
-    res.send('Hello ' + req.body.name);
-});
+app.use(userAuth); // check user
 
-// route about page
-app.get('/about', function(req, res) {
-    res.send('about page')
-})
-
-// route contact page
-app.get('/contact', function(req, res) {
-    res.sendFile(__dirname + '/contact.html');
-});
-app.post('/contact', function(req, res) {
-    console.log(req.body); // we want to see data in console
-    res.send('hello ' + req.body.name);
-})
-
-// grab user profile && post
+// user route
 app.get('/@:username/:post_slug', checkUser, function(req, res) {
     console.log(req.params);
-    res.send('hello ' + req.params.username + '! You are on the ' + req.params.post_slug + ' page.');
-})
 
-// make sure user is authenticated
-function userAuthentication(req, res, next) {
+    // grab username && post
+    res.send('hello ' + req.params.username + ' welcome to your ' + req.params.post_slug);
+});
 
-    // req.params.token
-    console.log('user authentication');
-    next()
-}
+// about page
+app.get('/about', function(req, res) {
+    res.send('about page');
+});
 
 
-// user validation middleware
-function checkUser(req, res, next) {
-    console.log(req.params, 'middleware log');
 
-    // check database
+// 404 page
+app.use(function(req, res, next) {
+    res.status(404);
+    res.sendFile(__dirname + '/404.html');
+});
 
-    // if user exist, then
+
+// global app authentication
+function userAuth(req, res, next) {
+    console.log('authentication');
     next();
 }
 
-// configure server
+
+// authentication middleware
+function checkUser(req, res, next) {
+    console.log(req.params, 'this is the middleware');
+
+    // mongo checkUser
+    // var user.User.findOne({ username.params.username});
+    // if (! user) {
+    // dosomething
+    // } else
+    // do another thing
+    next();
+    // }
+
+}
+
+// server config
 app.listen(port, function() {
-    console.log('- server is running and listening on port ' + port + ' -');
-});
+    console.log('app is running ' + port);
+});;
