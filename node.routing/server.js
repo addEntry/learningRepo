@@ -29,6 +29,12 @@ app.post('/contact', function(req, res) {
     res.send('hello ' + req.body.name);
 })
 
+// grab user profile && post
+app.get('/@:username/:post_slug', function(req, res) {
+    console.log(req.params);
+    res.send('hello ' + req.params.username + '! You are on the ' + req.params.post_slug + ' page.');
+})
+
 // configure server
 app.listen(port, function() {
     console.log('- server is running and listening on port ' + port + ' -');
