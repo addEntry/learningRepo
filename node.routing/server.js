@@ -17,6 +17,9 @@ app.get('/', function(req, res) {
 });
 app.use(userAuthentication) // set user authentication after login page
 
+app.post('/user', function(req, res) {
+    res.send('Hello ' + req.body.name);
+});
 
 app.get('/about', function(req, res) {
     res.send('about page')
