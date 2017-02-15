@@ -11,11 +11,12 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
-
 // configure routes
 app.get('/', function(req, res) {
     res.sendFile(__dirname + '/index.html');
 });
+app.use(userAuthentication) // set user authentication after login page
+
 
 app.get('/about', function(req, res) {
     res.send('about page')
@@ -30,10 +31,29 @@ app.post('/contact', function(req, res) {
 })
 
 // grab user profile && post
-app.get('/@:username/:post_slug', function(req, res) {
+app.get('/@:username/:post_slug', checkUser, function(req, res) {
     console.log(req.params);
     res.send('hello ' + req.params.username + '! You are on the ' + req.params.post_slug + ' page.');
 })
+
+// make sure user is authenticated
+function userAuthentication(req, res, next) {
+
+    // req.params.token
+    console.log('user authentication');
+    next()
+}
+
+
+// user validation middleware
+function checkUser(req, res, next) {
+    console.log(req.params, 'middleware log');
+
+    // check database
+
+    // if user exist, then
+    next();
+}
 
 // configure server
 app.listen(port, function() {
