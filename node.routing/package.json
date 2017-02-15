@@ -1,0 +1,31 @@
+{
+  "name": "node.routing",
+  "version": "1.0.0",
+  "description": "routing nodejs applications knowledge",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/addEntry/learningRepo.git"
+  },
+  "keywords": [
+    "nodejs",
+    "routing"
+  ],
+  "author": "addEntry",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/addEntry/learningRepo/issues"
+  },
+  "homepage": "https://github.com/addEntry/learningRepo#readme",
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.16.1",
+    "express": "^4.14.1",
+    "morgan": "^1.8.1"
+  }
+}
