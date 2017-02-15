@@ -11,36 +11,9 @@ app.use(bodyParser.urlencoded({
 }));
 
 // routes config
+app.use(require('./app/routes'));
 
-// index route
-app.get('/', function(req, res) {
-    res.sendFile(__dirname + '/index.html');
-});
-
-app.use(userAuth); // check user
-
-// user route
-app.get('/@:username/:post_slug', checkUser, function(req, res) {
-    console.log(req.params);
-
-    // grab username && post
-    res.send('hello ' + req.params.username + ' welcome to your ' + req.params.post_slug);
-});
-
-// about page
-app.get('/about', function(req, res) {
-    res.send('about page');
-});
-
-
-
-// 404 page
-app.use(function(req, res, next) {
-    res.status(404);
-    res.sendFile(__dirname + '/404.html');
-});
-
-
+/*
 // global app authentication
 function userAuth(req, res, next) {
     console.log('authentication');
@@ -62,6 +35,7 @@ function checkUser(req, res, next) {
     // }
 
 }
+*/
 
 // server config
 app.listen(port, function() {
