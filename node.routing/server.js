@@ -12,6 +12,8 @@ app.use(bodyParser.urlencoded({
 }));
 
 // configure routes
+
+// route index page && authentication
 app.get('/', function(req, res) {
     res.sendFile(__dirname + '/index.html');
 });
@@ -21,10 +23,12 @@ app.post('/user', function(req, res) {
     res.send('Hello ' + req.body.name);
 });
 
+// route about page
 app.get('/about', function(req, res) {
     res.send('about page')
 })
 
+// route contact page
 app.get('/contact', function(req, res) {
     res.sendFile(__dirname + '/contact.html');
 });
